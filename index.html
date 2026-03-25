@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matthew Wakefield — Making Apps Users Love</title>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Matthew Wakefield">
+    <meta property="og:site_name" content="Matthew Wakefield">
+    <meta property="og:url" content="https://wakefieldweb.net">
+    <meta property="og:image" content="https://wakefieldweb.net/images/hero-bg.jpg">
+    <meta name="description" content="Matthew Wakefield — iOS app developer and former Apple engineer, making apps users love.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #222;
+            line-height: 1.6;
+            background: #000;
+        }
+
+        /* Header */
+        header {
+            background: #1a1a1a;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-name {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover { color: #fff; }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url("images/hero-bg.jpg") center/cover no-repeat;
+            filter: brightness(0.5);
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            padding: 0 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        /* Showcase image */
+        .showcase {
+            background: #e5e5e5;
+            text-align: center;
+            padding: 4rem 1.5rem;
+        }
+
+        .showcase img {
+            max-width: 640px;
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* About */
+        .about {
+            background: #fff;
+            padding: 5rem 1.5rem;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .about p {
+            max-width: 640px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #444;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+        }
+
+        .card {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4 / 3;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s;
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+        }
+
+        .card-label {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.4);
+            transition: background 0.3s;
+        }
+
+        .card:hover .card-label {
+            background: rgba(0, 0, 0, 0.55);
+        }
+
+        .card-label span {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        /* Contact */
+        .contact {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 5rem 1.5rem;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .contact p {
+            color: #aaa;
+            margin-bottom: 2rem;
+        }
+
+        .contact a {
+            color: #6cb4ee;
+            text-decoration: none;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .contact-form label {
+            display: block;
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 0.3rem;
+            margin-top: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            border: 1px solid #444;
+            border-radius: 4px;
+            background: #2a2a2a;
+            color: #fff;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .contact-form textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #6cb4ee;
+        }
+
+        .contact-form button {
+            margin-top: 1.5rem;
+            padding: 0.7rem 2rem;
+            background: #fff;
+            color: #1a1a1a;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .contact-form button:hover {
+            background: #ddd;
+        }
+
+        /* Footer */
+        footer {
+            background: #111;
+            color: #666;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .cards { grid-template-columns: 1fr; }
+            header { padding: 0.8rem 1rem; }
+            nav a { margin-left: 1rem; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="/" class="site-name">Matthew Wakefield</a>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Making apps users love</h1>
+        <p>Let's face it, most apps lack polish. There are app developers and there are craftsmen. An app worth making is worth making the right way.</p>
+    </div>
+</section>
+
+<section class="showcase">
+    <img src="images/app-screenshot.jpg" alt="App showcase">
+</section>
+
+<section class="about" id="about">
+    <h2>About Me</h2>
+    <p>I've been making software for over 25 years. For the past 10 years, I've made iPhone and iPad apps exclusively. As a former Apple engineer, I know what it takes to make apps that have that special magic Apple fans adore.</p>
+</section>
+
+<section class="cards">
+    <div class="card">
+        <img src="images/simple.jpg" alt="Simple">
+        <div class="card-label"><span>Simple</span></div>
+    </div>
+    <div class="card">
+        <img src="images/elegant.jpg" alt="Elegant">
+        <div class="card-label"><span>Elegant</span></div>
+    </div>
+    <div class="card">
+        <img src="images/quality.jpg" alt="Quality">
+        <div class="card-label"><span>Quality</span></div>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <h2>Email Me</h2>
+    <p>Have a question or want to work together? <a href="mailto:matt@wakefieldweb.com">matt@wakefieldweb.com</a></p>
+</section>
+
+<footer>
+    <p>Copyright &copy; Matthew Wakefield. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
